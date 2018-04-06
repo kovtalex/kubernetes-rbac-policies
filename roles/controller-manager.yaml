@@ -6,10 +6,8 @@ metadata:
 rules:
   -
     apiGroups:
-      # have access to everything except Secrets
       - "*"
     resources: ["*"]
     verbs: ["*"]
   - nonResourceURLs: [""]
     verbs: ["*"]
-

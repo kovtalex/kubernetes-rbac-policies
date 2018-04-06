@@ -28,6 +28,7 @@ rules:
       - namespaces
       - nodes
       - pods
+      - pods/log
       - persistentvolumes
       - persistentvolumeclaims
       - resourcequotas

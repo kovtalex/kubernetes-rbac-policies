@@ -14,8 +14,9 @@ rules:
       - persistentvolumes
       - resourcequotas
       - services
-      -cronjobs
-      -jobs
+      - cronjobs
+      - jobs
+      - pods/log
     verbs: ["get", "watch", "list"]
   - nonResourceURLs: ["*"]
     verbs: ["get", "watch", "list"]
