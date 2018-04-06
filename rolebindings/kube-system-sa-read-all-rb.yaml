@@ -1,5 +1,5 @@
 kind: ClusterRoleBinding
-apiVersion: rbac.authorization.k8s.io/v1alpha1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: kube-system-readall-role-binding
 subjects:
@@ -9,4 +9,4 @@ subjects:
 roleRef:
   kind: ClusterRole
   name: cluster-read-all
-  apiVersion: rbac.authorization.k8s.io/v1alpha1
+  apiVersion: rbac.authorization.k8s.io/v1

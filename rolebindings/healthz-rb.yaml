@@ -1,6 +1,6 @@
 # This cluster role binding allows anyone in the "manager" group to read secrets in any namespace.
 kind: ClusterRoleBinding
-apiVersion: rbac.authorization.k8s.io/v1alpha1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: healthz-role-binding
 subjects:
@@ -9,4 +9,4 @@ subjects:
 roleRef:
   kind: ClusterRole
   name: healthz-reader-role
-  apiVersion: rbac.authorization.k8s.io/v1alpha1
+  apiVersion: rbac.authorization.k8s.io/v1

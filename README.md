@@ -7,7 +7,7 @@ Given to all users in the system, would help in discovery and common read only o
 
 ```yaml
 kind: ClusterRole
-apiVersion: rbac.authorization.k8s.io/v1alpha1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: default-reader
 rules:
@@ -28,7 +28,7 @@ rules:
 Appropriate binding would be:
 ```yaml
 kind: ClusterRoleBinding
-apiVersion: rbac.authorization.k8s.io/v1alpha1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: default-reader-role-binding
 subjects:
@@ -37,14 +37,14 @@ subjects:
 roleRef:
   kind: ClusterRole
   name: default-reader
-  apiVersion: rbac.authorization.k8s.io/v1alpha1
+  apiVersion: rbac.authorization.k8s.io/v1
 ```
 
 **Read all**
 Can be given to pseudo admins (like schedulers), for readonly operations. Not given by default to anyone. Can read everything except secrets
 ```yaml
 ---
-apiVersion: rbac.authorization.k8s.io/v1alpha1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: cluster-read-all
@@ -94,7 +94,7 @@ rules:
 **Cluster Administrator**
 ```yaml
 ---
-apiVersion: rbac.authorization.k8s.io/v1alpha1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: cluster-admin-all
@@ -138,7 +138,7 @@ rules:
 Controller manager needs access to almost all the resources in Kubernetes hence, we need to grant it top level admin access. Controller manager is actually a super user, so it can work even without a rolebinding.
 ```yaml
 ---
-apiVersion: rbac.authorization.k8s.io/v1alpha1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: cluster-controller-manager
@@ -157,7 +157,7 @@ rules:
 
 To spin up pods and update node and pod status the kubelet would need the following role and binding:
 ```yaml
-apiVersion: rbac.authorization.k8s.io/v1alpha1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata: 
   name: kubelet-runtime
@@ -204,7 +204,7 @@ rules:
 The appropriate binding would be:
 ```yaml
 kind: ClusterRoleBinding
-apiVersion: rbac.authorization.k8s.io/v1alpha1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: kubelet-role-binding
 subjects:
@@ -213,12 +213,12 @@ subjects:
 roleRef:
   kind: ClusterRole
   name: kubelet-runtime
-  apiVersion: rbac.authorization.k8s.io/v1alpha1
+  apiVersion: rbac.authorization.k8s.io/v1
 ```
 
 * For kubelet to check apiserver `healthz`:
 ```yaml
-apiVersion: rbac.authorization.k8s.io/v1alpha1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: healthz-reader-role
@@ -234,7 +234,7 @@ rules:
 The reason we made this explicit healthz binding is to make sure only the healthz is allowed access by everyone. Not only kubelet, but other monitoring systems can usee healthz in the future and hence granting access to all users
 ```yaml
 kind: ClusterRoleBinding
-apiVersion: rbac.authorization.k8s.io/v1alpha1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: healthz-role-binding
 subjects:
@@ -243,7 +243,7 @@ subjects:
 roleRef:
   kind: ClusterRole
   name: healthz-reader-role
-  apiVersion: rbac.authorization.k8s.io/v1alpha1
+  apiVersion: rbac.authorization.k8s.io/v1
 ```
 
 **Scheduler**
@@ -251,7 +251,7 @@ Scheduler needs the following roles:
 
 ```yaml
 kind: ClusterRole
-apiVersion: rbac.authorization.k8s.io/v1alpha1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: scheduler
 rules:
@@ -270,7 +270,7 @@ rules:
 needs the following role bindings:
 ```yaml
 kind: ClusterRoleBinding
-apiVersion: rbac.authorization.k8s.io/v1alpha1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: scheduler-role-binding
 subjects:
@@ -279,12 +279,12 @@ subjects:
 roleRef:
   kind: ClusterRole
   name: cluster-read-all
-  apiVersion: rbac.authorization.k8s.io/v1alpha1
+  apiVersion: rbac.authorization.k8s.io/v1
 ```
 and also
 ```yaml
 kind: ClusterRoleBinding
-apiVersion: rbac.authorization.k8s.io/v1alpha1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: scheduler-role-binding
 subjects:
@@ -293,14 +293,14 @@ subjects:
 roleRef:
   kind: ClusterRole
   name: scheduler
-  apiVersion: rbac.authorization.k8s.io/v1alpha1
+  apiVersion: rbac.authorization.k8s.io/v1
 ```
 
 **Kube Proxy** 
 Needs the following:
 ```yaml
 ---
-apiVersion: rbac.authorization.k8s.io/v1alpha1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: kube-proxy-role
@@ -329,7 +329,7 @@ rules:
 ```yaml
 # This cluster role binding allows anyone in the "manager" group to read secrets in any namespace.
 kind: ClusterRoleBinding
-apiVersion: rbac.authorization.k8s.io/v1alpha1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: kubeproxy-role-binding
 subjects:
@@ -338,14 +338,14 @@ subjects:
 roleRef:
   kind: ClusterRole
   name: kube-proxy-role
-  apiVersion: rbac.authorization.k8s.io/v1alpha1
+  apiVersion: rbac.authorization.k8s.io/v1
 ```
 
 
 **Kube Proxy**
 ```yaml
 ---
-apiVersion: rbac.authorization.k8s.io/v1alpha1
+apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
 metadata:
   name: kube-proxy-role
@@ -375,7 +375,7 @@ And the corresponding binding
 
 ```yaml
 kind: RoleBinding
-apiVersion: rbac.authorization.k8s.io/v1alpha1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: kube-system-sa-admin
   namespace: kube-system
@@ -387,7 +387,7 @@ roleRef:
   kind: Role
   namespace: kube-system
   name: kube-system-admin
-  apiVersion: rbac.authorization.k8s.io/v1alpha1
+  apiVersion: rbac.authorization.k8s.io/v1
 ```
 
 **Kube System Components:**
@@ -396,7 +396,7 @@ Long term plan should be to move components out of kube-system into appropriate 
 The following is a `Role` and grants access only within the kube-system namespace
 ```yaml
 kind: Role
-apiVersion: rbac.authorization.k8s.io/v1alpha1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   namespace: kube-system
   name: kube-system-admin
@@ -409,7 +409,7 @@ rules:
 Appropriate binding:
 ```yaml
 kind: RoleBinding
-apiVersion: rbac.authorization.k8s.io/v1alpha1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: kube-system-sa-admin
   namespace: kube-system
@@ -421,13 +421,13 @@ roleRef:
   kind: Role
   namespace: kube-system
   name: kube-system-admin
-  apiVersion: rbac.authorization.k8s.io/v1alpha1
+  apiVersion: rbac.authorization.k8s.io/v1
 ```
   
 Read all for dns and monitoring to work
 ```yaml
 kind: ClusterRoleBinding
-apiVersion: rbac.authorization.k8s.io/v1alpha1
+apiVersion: rbac.authorization.k8s.io/v1
 metadata:
   name: kube-system-readall-role-binding
 subjects:
@@ -437,5 +437,5 @@ subjects:
 roleRef:
   kind: ClusterRole
   name: cluster-read-all
-  apiVersion: rbac.authorization.k8s.io/v1alpha1
+  apiVersion: rbac.authorization.k8s.io/v1
 ```
