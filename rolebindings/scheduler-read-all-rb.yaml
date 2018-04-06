@@ -8,5 +8,5 @@ subjects:
     apiGroup: ""
 roleRef:
   kind: ClusterRole
-  name: system:kube-scheduler
+  name: scheduler
   apiGroup: ""

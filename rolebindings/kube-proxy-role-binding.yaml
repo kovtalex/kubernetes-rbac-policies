@@ -9,5 +9,5 @@ subjects:
     apiGroup: ""
 roleRef:
   kind: ClusterRole
-  name: system:node-proxier
+  name: kube-proxy-role
   apiGroup: ""

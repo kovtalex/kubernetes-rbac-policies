@@ -9,5 +9,5 @@ subjects:
     apiGroup: ""
 roleRef:
   kind: ClusterRole
-  name: system:node
+  name: kubelet-runtime
   apiGroup: ""
