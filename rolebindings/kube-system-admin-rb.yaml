@@ -10,6 +10,5 @@ subjects:
     apiGroup: ""
 roleRef:
   kind: Role
-  namespace: kube-system
   name: kube-system-admin
   apiGroup: ""
