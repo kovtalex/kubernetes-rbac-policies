@@ -29,6 +29,7 @@ rules:
       - nodes
       - pods
       - pods/log
+      - services/proxy
       - persistentvolumes
       - persistentvolumeclaims
       - resourcequotas
