@@ -14,6 +14,8 @@ rules:
       - persistentvolumes
       - resourcequotas
       - services
+      -cronjobs
+      -jobs
     verbs: ["get", "watch", "list"]
   - nonResourceURLs: ["*"]
     verbs: ["get", "watch", "list"]

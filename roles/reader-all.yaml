@@ -35,6 +35,7 @@ rules:
       - replicationcontrollers
       - serviceaccounts
       - services
+      - cronjobs
     verbs:
       - get
       - watch
@@ -44,4 +45,3 @@ rules:
       - get
       - watch
       - list
-

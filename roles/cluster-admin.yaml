@@ -35,7 +35,7 @@ rules:
       - replicationcontrollers
       - serviceaccounts
       - services
+      - cronjobs
     verbs: ["*"]
   - nonResourceURLs: ["*"]
     verbs: ["*"]
-
