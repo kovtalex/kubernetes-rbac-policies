@@ -12,16 +12,6 @@ rules:
       - events
       - services
       - nodes
-    verbs: ["get", "watch", "list"]
-  - nonResourceURLs: ["*"]
-    verbs: ["get", "watch", "list"]
-
-  -
-    apiGroups:
-      - ""
-    resources:
-      - events
     verbs: ["*"]
   - nonResourceURLs: ["*"]
-    verbs: ["*"]
-
+    verbs: ["get", "watch", "list"]

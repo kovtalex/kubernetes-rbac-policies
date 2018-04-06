@@ -2,12 +2,12 @@
 apiVersion: rbac.authorization.k8s.io/v1beta1
 kind: ClusterRoleBinding
 metadata:
-  name: kubeproxy-role-binding
+  name: kubelet-role-binding
 subjects:
-  - kind: User
-    name: system:kube-proxy
+  - kind: Group
+    name: system:nodes
     apiGroup: ""
 roleRef:
   kind: ClusterRole
-  name: kube-proxy-role
+  name: kubelet-runtime
   apiGroup: ""

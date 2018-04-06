@@ -1,0 +1,13 @@
+# basic readonly
+apiVersion: rbac.authorization.k8s.io/v1beta1
+kind: ClusterRoleBinding
+metadata:
+  name: readonly-role-binding
+subjects:
+  - kind: Group
+    name: oidc:readonly
+    apiGroup: ""
+roleRef:
+  kind: ClusterRole
+  name: cluster-read-all
+  apiGroup: ""
