@@ -21,6 +21,7 @@ rules:
       - healthz
       - jobs
       - cronjobs
+      - secrets
     verbs: ["*"]
   - nonResourceURLs: ["*"]
     verbs: ["get", "watch", "list"]
