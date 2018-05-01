@@ -23,7 +23,7 @@ rules:
       - endpoints
       - horizontalpodautoscalers
       - ingress
-      - ingresses.extensions
+      - ingresses/extensions
       - jobs
       - limitranges
       - namespaces
