@@ -22,7 +22,7 @@ rules:
       - events
       - endpoints
       - horizontalpodautoscalers
-      - ingress
+      - ingresses
       - ingresses/extensions
       - jobs
       - limitranges
