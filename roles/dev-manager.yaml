@@ -19,6 +19,7 @@ rules:
       - configmaps
       - daemonsets
       - deployments
+      - deployments/scale
       - events
       - endpoints
       - horizontalpodautoscalers
